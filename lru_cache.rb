@@ -1,15 +1,17 @@
 class LRUCache
 
   def initialize
-
+    @cache = []
   end
 
   def count
     # return number of elements currently in cache
+    @cache.count
   end
 
   def add(el)
     # adds element to cache according to LRU principle
+    
   end
 
   def show
