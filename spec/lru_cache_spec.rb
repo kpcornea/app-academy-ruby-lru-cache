@@ -37,11 +37,10 @@ describe  LRUCache do
     end
   end
 
-  # describe "#count" do
-  #   it "returns the count" do
-  #
-  #     expect(lru.count).to eq(4)
-  #   end
-  # end
+  describe "#count" do
+    it "returns the count when empty" do
+      expect(lru.count).to eq(0)
+    end
+  end
 
 end
