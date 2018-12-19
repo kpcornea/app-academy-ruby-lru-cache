@@ -41,6 +41,12 @@ describe  LRUCache do
     it "returns the count when empty" do
       expect(lru.count).to eq(0)
     end
+
+    it "returns the count with elements" do
+      lru.add("I walk the line")
+      lru.add(5)
+      expect(lru.count).to eq(2)
+    end
   end
 
 end
