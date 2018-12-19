@@ -8,5 +8,9 @@ describe  LRUCache do
     it "initializes an array cache" do
       expect(lru.cache).to eq([])
     end
+
+    it "sets a max_length" do
+      expect(lru.max_length).to eq(4)
+    end
   end
 end
