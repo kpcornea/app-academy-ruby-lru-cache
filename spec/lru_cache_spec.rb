@@ -20,6 +20,21 @@ describe  LRUCache do
       lru.add(5)
       expect(lru.cache).to eq(["I walk the line", 5])
     end
+
+    it "adds correctly without room" do
+      lru.add("I walk the line")
+      lru.add(5)
+      lru.add([1,2,3])
+      lru.add(5)
+      lru.add(-5)
+      lru.add({a: 1, b: 2, c: 3})
+      lru.add([1,2,3,4])
+      lru.add("I walk the line")
+      lru.add(:ring_of_fire)
+      lru.add("I walk the line")
+      lru.add({a: 1, b: 2, c: 3})
+      expect(lru.cache).to eq([[1, 2, 3, 4], :ring_of_fire, "I walk the line", {:a=>1, :b=>2, :c=>3}])
+    end
   end
 
   # describe "#count" do
