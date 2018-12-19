@@ -1,8 +1,8 @@
 class LRUCache
 
-  def initialize(length)
-    # need to take into account original length of cache and resizing i think. yeah i think that deletion will be part of the add method
-    @cache = Array.new(length)
+  def initialize(max_length)
+    @cache = []
+    @max_length = max_length
   end
 
   def count
@@ -13,11 +13,22 @@ class LRUCache
   def add(el)
     # adds element to cache according to LRU principle
     # need to take into account nil autofill on initializing array and what happens when reaching max capacity (lru gets deleted)
-    if @cache.include?(el)
-      @cache.delete(el)
-      @cache << el
+
+    if count < @max_length
+      if @cache.include?(el)
+        @cache.delete(el)
+        @cache << el
+      else
+        @cache << el
+      end
     else
-      @cache << el
+      if @cache.include?(el)
+        @cache.delete(el)
+        @cache << el
+      else
+        @cache.shift
+        @cache << el
+      end
     end
   end
 
@@ -28,5 +39,17 @@ class LRUCache
 
   private
   # helper methods go here
+
+  def room?
+    @cache.include?(nil)
+  end
+
+  def add_with_room
+
+  end
+
+  def add_without_room
+
+  end
 
 end
