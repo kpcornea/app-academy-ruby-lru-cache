@@ -12,23 +12,10 @@ class LRUCache
 
   def add(el)
     # adds element to cache according to LRU principle
-    # need to take into account nil autofill on initializing array and what happens when reaching max capacity (lru gets deleted)
-
     if count < @max_length
-      if @cache.include?(el)
-        @cache.delete(el)
-        @cache << el
-      else
-        @cache << el
-      end
+      add_with_room(el)
     else
-      if @cache.include?(el)
-        @cache.delete(el)
-        @cache << el
-      else
-        @cache.shift
-        @cache << el
-      end
+      add_without_room(el)
     end
   end
 
@@ -40,16 +27,23 @@ class LRUCache
   private
   # helper methods go here
 
-  def room?
-    @cache.include?(nil)
+  def add_with_room(el)
+    if @cache.include?(el)
+      @cache.delete(el)
+      @cache << el
+    else
+      @cache << el
+    end
   end
 
-  def add_with_room
-
-  end
-
-  def add_without_room
-
+  def add_without_room(el)
+    if @cache.include?(el)
+      @cache.delete(el)
+      @cache << el
+    else
+      @cache.shift
+      @cache << el
+    end
   end
 
 end
