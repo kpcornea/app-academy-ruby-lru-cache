@@ -1,4 +1,5 @@
 class LRUCache
+  attr_reader :cache, :max_length
 
   def initialize(max_length)
     @cache = []
