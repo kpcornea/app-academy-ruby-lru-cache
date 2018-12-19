@@ -13,4 +13,20 @@ describe  LRUCache do
       expect(lru.max_length).to eq(4)
     end
   end
+
+  describe "#add" do
+    it "adds correctly with room" do
+      lru.add("I walk the line")
+      lru.add(5)
+      expect(lru.cache).to eq(["I walk the line", 5])
+    end
+  end
+
+  # describe "#count" do
+  #   it "returns the count" do
+  #
+  #     expect(lru.count).to eq(4)
+  #   end
+  # end
+
 end
